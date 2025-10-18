@@ -1,49 +1,364 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website is this</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        main {
-            margin-top: 30px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kalana Lakshan — Portfolio</title>
+  <meta name="description" content="Portfolio of Kalana Lakshan — CSE undergraduate at University of Moratuwa. Location: Anuradhapura, Sri Lanka."/>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa7c7;
+      --accent:#6ee7b7;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --maxw:1000px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      padding:32px;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(110,231,183,0.06), transparent 10%),
+        linear-gradient(160deg, #071126 0%, #071629 40%, #081023 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      justify-content:center;
+      font-size:15px;
+      line-height:1.45;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    /* Left column */
+    .card {
+      background: linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:20px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .profile {
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .avatar{
+      width:84px;
+      height:84px;
+      flex:0 0 84px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#0ea5a7,#7c3aed);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:26px;
+      color:white;
+      box-shadow: 0 6px 18px rgba(7,9,23,0.6);
+    }
+
+    h1{font-size:20px;margin:0 0 2px 0}
+    .muted{color:var(--muted);font-size:13px}
+    .small{font-size:13px;color:var(--muted)}
+
+    .contact-list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+    .chip{
+      display:flex;gap:10px;align-items:center;background:var(--glass);padding:10px;border-radius:10px;font-weight:600;font-size:13px;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02)
+    }
+    .stat-row{display:flex;gap:8px;margin-top:12px}
+    .stat{background:var(--glass-2);padding:10px;border-radius:10px;font-weight:700;font-size:13px;color:var(--muted);flex:1;text-align:center;border:1px solid rgba(255,255,255,0.02)}
+    .btn{
+      display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,#0ea5a7,#60a5fa);color:#052022;font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 6px 20px rgba(30,100,120,0.08);
+    }
+
+    /* Right column */
+    .main-col{
+      display:flex;flex-direction:column;gap:20px;
+    }
+
+    .section-title{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;margin-bottom:8px;
+    }
+    .section-title h2{font-size:16px;margin:0}
+    .card p{margin:0}
+
+    .summary{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)
+    }
+
+    /* experience / education lists */
+    .list-item{display:flex;gap:12px;padding:12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+    .list-item .left{width:56px;height:56px;border-radius:8px;background:linear-gradient(180deg,#1f2937, #111827);display:grid;place-items:center;font-weight:700}
+    .meta{color:var(--muted);font-size:13px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .badge{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+
+    /* posts */
+    .post{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .post .post-head{display:flex;gap:12px;align-items:center}
+    .post .post-body{margin-top:10px;color:#dbeafe}
+
+    footer{margin-top:24px; text-align:center;color:var(--muted); font-size:13px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .wrap{grid-template-columns:1fr; padding:0 8px}
+      .profile{gap:12px}
+      .avatar{width:72px;height:72px}
+    }
+  </style>
 </head>
 <body>
+  <main class="wrap" role="main" aria-labelledby="page-title">
+    <!-- LEFT -->
+    <aside class="card" aria-label="Profile card">
+      <div class="profile" >
+        <div class="avatar" aria-hidden="true">KL</div>
+        <div style="flex:1">
+          <h1 id="page-title">Kalana Lakshan</h1>
+          <div class="muted">University of Moratuwa — CSE Undergraduate</div>
+          <div class="muted" style="margin-top:6px">Anuradhapura, North Central Province, Sri Lanka</div>
+          <div class="small" style="margin-top:8px">Contact info • 105 connections</div>
+        </div>
+      </div>
 
-    <header>
-        <h1>Welcome to My Simple Website</h1>
-    </header>
+      <div class="contact-list" style="margin-top:16px">
+        <div class="chip" title="Open to work">🔓 Open to — Add profile section</div>
+        <div class="chip" title="Resources">💡 Resources — Showcase services</div>
+        <div class="chip" title="Analytics">📊 Analytics — 35 profile views (past 7 days)</div>
+      </div>
 
-    <main>
-        <p>This is a basic HTML page with some styling and a button.</p>
-        <button onclick="alert('Hello! Thanks for visiting.')">Click Me!</button>
-    </main>
+      <div class="stat-row" style="margin-top:14px">
+        <div class="stat">
+          <div style="font-size:20px">105</div>
+          <div class="muted" style="font-size:12px">Followers</div>
+        </div>
+        <div class="stat">
+          <div style="font-size:20px">35</div>
+          <div class="muted" style="font-size:12px">Profile views</div>
+        </div>
+      </div>
 
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <button class="btn" onclick="location.href='#contact'">Contact</button>
+        <button class="btn" style="background:transparent;color:var(--accent);border:1px solid rgba(110,231,183,0.12)" onclick="copyEmail()">Copy info</button>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="small" style="margin-bottom:8px">Quick highlights</div>
+        <div class="badges">
+          <span class="badge">University of Moratuwa</span>
+          <span class="badge">Machine Learning (IBM)</span>
+          <span class="badge">Generative AI</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT -->
+    <section class="main-col">
+      <!-- SUMMARY -->
+      <div class="card summary" aria-labelledby="summary-title">
+        <div class="section-title">
+          <h2 id="summary-title">Summary</h2>
+          <div class="muted small">Write a summary to highlight your personality or work experience</div>
+        </div>
+        <p>
+          I'm a Computer Science & Engineering undergraduate at the University of Moratuwa (Mar 2024 — present), based in Anuradhapura, Sri Lanka.
+          I work on AI/ML projects and full-stack apps. Recent highlights include winning the SLT Mobitel CodeBlaster Hackathon 2025 (product: <strong>Pahasara</strong>) — an AI-powered personalized learning platform.
+        </p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="card" aria-labelledby="exp-title">
+        <div class="section-title">
+          <h2 id="exp-title">Experience</h2>
+          <div class="muted">Showcase your accomplishments</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="list-item" aria-label="Hackathon win">
+            <div class="left">🏆</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Champion — SLT Mobitel CodeBlaster Hackathon 2025</div>
+              <div class="meta">Pahasara — AI-powered personalized learning platform (Team: Sangeeth Kariyapperuma, Kalana Lakshan)</div>
+              <div class="muted" style="margin-top:8px;font-size:13px">Final pitch: 30 Sep 2025 — Monarch Imperial; Award ceremony included Deputy Minister of Digital Economy</div>
+            </div>
+          </div>
+
+          <div class="list-item" aria-label="HRxTech participation">
+            <div class="left">🎤</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Participant — HRxTech 2025</div>
+              <div class="meta">Event at University of Moratuwa — "Leading HR into a Smarter Tomorrow" (20 July 2025)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="card" aria-labelledby="edu-title">
+        <div class="section-title">
+          <h2 id="edu-title">Education</h2>
+          <div class="muted">Academic background</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="list-item">
+            <div class="left">🎓</div>
+            <div style="flex:1">
+              <div style="font-weight:800">University of Moratuwa</div>
+              <div class="muted">Bachelor of the Science of Engineering (Hons), Computer Science and Engineering — Mar 2024 — present</div>
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">🏫</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Anuradhapura Central College</div>
+              <div class="muted">Jan 2014 — Feb 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="card" aria-labelledby="cert-title">
+        <div class="section-title">
+          <h2 id="cert-title">Licenses & Certifications</h2>
+          <div class="muted">Relevant courses & badges</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="list-item">
+            <div class="left">🔖</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Machine Learning with Python — IBM</div>
+              <div class="muted">Issued Aug 2025 • Credential ID: 9HS1BZ7F91MD</div>
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="left">🧠</div>
+            <div style="flex:1">
+              <div style="font-weight:800">Building Generative AI-Powered Applications with Python — IBM</div>
+              <div class="muted">Issued May 2025 • Credential ID: AJERNZVQYVKT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="card" aria-labelledby="skills-title">
+        <div class="section-title">
+          <h2 id="skills-title">Skills</h2>
+          <div class="muted">Selected technical skills</div>
+        </div>
+        <div class="badges" style="margin-top:6px">
+          <span class="badge">Python</span>
+          <span class="badge">Machine Learning</span>
+          <span class="badge">Artificial Intelligence</span>
+          <span class="badge">React</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">Full-stack</span>
+        </div>
+      </div>
+
+      <!-- LATEST POSTS -->
+      <div class="card" aria-labelledby="posts-title">
+        <div class="section-title">
+          <h2 id="posts-title">Recent posts</h2>
+          <div class="muted">Selected social updates</div>
+        </div>
+
+        <!-- Post 1 -->
+        <article class="post" aria-label="Post: CodeBlaster win">
+          <div class="post-head">
+            <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#0ea5a7);display:grid;place-items:center;font-weight:700">KL</div>
+            <div>
+              <div style="font-weight:800">Kalana Lakshan</div>
+              <div class="muted">2w • Visible to anyone</div>
+            </div>
+          </div>
+          <div class="post-body">
+            <p><strong>🚀 Championship — SLT Mobitel CodeBlaster Hackathon 2025</strong></p>
+            <p>We (Sangeeth Kariyapperuma, Kalana Lakshan) won the overall championship with <em>Pahasara</em> — an AI-powered personalized learning platform for Sri Lankan students. Final pitch held 30 Sep 2025 at the Monarch Imperial. Grateful for mentors and SLT Mobitel's support.</p>
+            <div class="muted" style="margin-top:8px">170 likes • 18 comments • 2 reposts</div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post" style="margin-top:12px" aria-label="Post: HRxTech 2025">
+          <div class="post-head">
+            <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#60a5fa,#6ee7b7);display:grid;place-items:center;font-weight:700">KL</div>
+            <div>
+              <div style="font-weight:800">Kalana Lakshan</div>
+              <div class="muted">2mo • Visible to anyone</div>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>🚀 Grateful to have been part of <strong>HRxTech 2025</strong> — "Leading HR into a Smarter Tomorrow" at University of Moratuwa (20 July 2025). Proud to share my Certificate of Participation and to keep learning and contributing.</p>
+            <div class="muted" style="margin-top:8px">12 likes • 1 comment</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- CONTACT & FOOTER -->
+      <div class="card" id="contact" aria-labelledby="contact-title">
+        <div class="section-title">
+          <h2 id="contact-title">Contact</h2>
+          <div class="muted">Get in touch</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="chip" style="background:transparent;color:var(--muted)">📍 Anuradhapura, North Central Province, Sri Lanka</div>
+          <div class="chip" style="background:transparent;color:var(--muted)">📧 <span id="contact-email">kalana.lakshan@example.com</span></div>
+          <div class="chip" style="background:transparent;color:var(--muted)">🔗 <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn / Profile</a></div>
+        </div>
+
+        <footer>
+          <div>Designed & built by Kalana Lakshan — University of Moratuwa</div>
+          <div style="margin-top:6px" class="muted">Single-file portfolio • Open to opportunities</div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Small helpers
+    function copyEmail(){
+      const email = document.getElementById('contact-email').textContent || 'kalana.lakshan@example.com';
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(email).then(()=>alert('Contact copied: ' + email));
+      } else {
+        prompt('Copy contact', email);
+      }
+    }
+
+    // Customize content: replace placeholders if you want
+    (function populate(){
+      // If you want to update the contact email quickly, change here.
+      const emailEl = document.getElementById('contact-email');
+      // replace placeholder with nothing — keep example address unless user changes it
+      if(emailEl && emailEl.textContent.trim() === 'kalana.lakshan@example.com'){
+        // leave as-is; instructs viewer to change file to set real email.
+      }
+    })();
+  </script>
 </body>
 </html>
