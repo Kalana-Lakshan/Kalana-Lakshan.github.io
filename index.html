@@ -1,364 +1,528 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kalana Lakshan — Portfolio</title>
-  <meta name="description" content="Portfolio of Kalana Lakshan — CSE undergraduate at University of Moratuwa. Location: Anuradhapura, Sri Lanka."/>
-  <style>
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#9aa7c7;
-      --accent:#6ee7b7;
-      --glass: rgba(255,255,255,0.03);
-      --glass-2: rgba(255,255,255,0.02);
-      --maxw:1000px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      padding:32px;
-      background:
-        radial-gradient(800px 400px at 10% 10%, rgba(110,231,183,0.06), transparent 10%),
-        linear-gradient(160deg, #071126 0%, #071629 40%, #081023 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      display:flex;
-      justify-content:center;
-      font-size:15px;
-      line-height:1.45;
-    }
-
-    .wrap{
-      width:100%;
-      max-width:var(--maxw);
-      display:grid;
-      grid-template-columns: 320px 1fr;
-      gap:24px;
-      align-items:start;
-    }
-
-    /* Left column */
-    .card {
-      background: linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));
-      border-radius:12px;
-      padding:20px;
-      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
-      border:1px solid rgba(255,255,255,0.03);
-    }
-
-    .profile {
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-    .avatar{
-      width:84px;
-      height:84px;
-      flex:0 0 84px;
-      border-radius:14px;
-      background:linear-gradient(135deg,#0ea5a7,#7c3aed);
-      display:grid;
-      place-items:center;
-      font-weight:700;
-      font-size:26px;
-      color:white;
-      box-shadow: 0 6px 18px rgba(7,9,23,0.6);
-    }
-
-    h1{font-size:20px;margin:0 0 2px 0}
-    .muted{color:var(--muted);font-size:13px}
-    .small{font-size:13px;color:var(--muted)}
-
-    .contact-list{margin-top:14px;display:flex;flex-direction:column;gap:10px}
-    .chip{
-      display:flex;gap:10px;align-items:center;background:var(--glass);padding:10px;border-radius:10px;font-weight:600;font-size:13px;color:var(--muted);
-      border:1px solid rgba(255,255,255,0.02)
-    }
-    .stat-row{display:flex;gap:8px;margin-top:12px}
-    .stat{background:var(--glass-2);padding:10px;border-radius:10px;font-weight:700;font-size:13px;color:var(--muted);flex:1;text-align:center;border:1px solid rgba(255,255,255,0.02)}
-    .btn{
-      display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,#0ea5a7,#60a5fa);color:#052022;font-weight:700;border:none;cursor:pointer;
-      box-shadow:0 6px 20px rgba(30,100,120,0.08);
-    }
-
-    /* Right column */
-    .main-col{
-      display:flex;flex-direction:column;gap:20px;
-    }
-
-    .section-title{
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;margin-bottom:8px;
-    }
-    .section-title h2{font-size:16px;margin:0}
-    .card p{margin:0}
-
-    .summary{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
-      padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)
-    }
-
-    /* experience / education lists */
-    .list-item{display:flex;gap:12px;padding:12px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
-    .list-item .left{width:56px;height:56px;border-radius:8px;background:linear-gradient(180deg,#1f2937, #111827);display:grid;place-items:center;font-weight:700}
-    .meta{color:var(--muted);font-size:13px}
-    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .badge{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
-
-    /* posts */
-    .post{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-    .post .post-head{display:flex;gap:12px;align-items:center}
-    .post .post-body{margin-top:10px;color:#dbeafe}
-
-    footer{margin-top:24px; text-align:center;color:var(--muted); font-size:13px}
-
-    /* responsive */
-    @media (max-width:880px){
-      .wrap{grid-template-columns:1fr; padding:0 8px}
-      .profile{gap:12px}
-      .avatar{width:72px;height:72px}
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kalana Lakshan — Computer Science and Engineering undergraduate at University of Moratuwa, specializing in Data Science, ML, and full-stack development." />
+  <meta name="author" content="H.M. Kalana Lakshan" />
+  <meta property="og:title" content="Kalana Lakshan | Portfolio" />
+  <meta property="og:description" content="CSE undergraduate · Data Science & Engineering · University of Moratuwa" />
+  <meta property="og:type" content="website" />
+  <title>Kalana Lakshan | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0f0e'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-weight='700' font-size='14' fill='%232dd4a8'%3EKL%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
-  <main class="wrap" role="main" aria-labelledby="page-title">
-    <!-- LEFT -->
-    <aside class="card" aria-label="Profile card">
-      <div class="profile" >
-        <div class="avatar" aria-hidden="true">KL</div>
-        <div style="flex:1">
-          <h1 id="page-title">Kalana Lakshan</h1>
-          <div class="muted">University of Moratuwa — CSE Undergraduate</div>
-          <div class="muted" style="margin-top:6px">Anuradhapura, North Central Province, Sri Lanka</div>
-          <div class="small" style="margin-top:8px">Contact info • 105 connections</div>
+  <div class="bg-atmosphere" aria-hidden="true"></div>
+  <div class="bg-mesh" aria-hidden="true"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <button class="mobile-nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="side-nav" id="sideNav" aria-label="Section navigation">
+    <a href="#intro" data-section="intro"><span class="dot"></span> Intro</a>
+    <a href="#interests" data-section="interests"><span class="dot"></span> Interests</a>
+    <a href="#qualifications" data-section="qualifications"><span class="dot"></span> Qualifications</a>
+    <a href="#projects" data-section="projects"><span class="dot"></span> Projects</a>
+    <a href="#research" data-section="research"><span class="dot"></span> Research</a>
+    <a href="#skills" data-section="skills"><span class="dot"></span> Skills</a>
+    <a href="#achievements" data-section="achievements"><span class="dot"></span> Achievements</a>
+    <a href="#experience" data-section="experience"><span class="dot"></span> Experience</a>
+    <a href="#contact" data-section="contact"><span class="dot"></span> Contact</a>
+  </nav>
+
+  <main class="main">
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="intro-eyebrow">Portfolio · 2026</p>
+          <h1 class="intro-name"><span>Kalana Lakshan</span></h1>
+          <p class="intro-role">Computer Science &amp; Engineering Undergraduate</p>
+          <p class="intro-summary">
+            Specializing in Data Science and Engineering at the University of Moratuwa.
+            Building ML systems, full-stack products, and research that turns data into decisions —
+            with a 3.95 GPA and multiple national hackathon wins.
+          </p>
+          <div class="intro-meta">
+            <a href="mailto:kalanal.23@cse.mrt.ac.lk">kalanal.23@cse.mrt.ac.lk</a>
+            <span>+94 70 340 7328</span>
+            <a href="https://github.com/Kalana-Lakshan" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/kalana-lakshan-5bb9a3345" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="intro-actions">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="intro-portrait">
+          <img src="assets/profile.png" alt="Portrait of Kalana Lakshan" width="320" height="427" />
+          <div class="badge"><strong>UoM CSE</strong> · Data Science &amp; Engineering</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section class="section" id="interests">
+      <div class="section-head">
+        <h2>My <span class="accent-word">Interests</span></h2>
+        <p>Areas I keep returning to — in coursework, competitions, and side projects.</p>
+      </div>
+      <div class="interests-grid">
+        <article class="interest-item" style="--item-accent:#3b82f6">
+          <div class="interest-icon" aria-hidden="true">💻</div>
+          <h3>Backend Development</h3>
+          <p>Designing robust APIs, services, and server-side logic that power real applications.</p>
+        </article>
+        <article class="interest-item" style="--item-accent:#a78bfa">
+          <div class="interest-icon" aria-hidden="true">🤖</div>
+          <h3>Machine Learning</h3>
+          <p>Building and evaluating predictive models that extract insight from messy, real-world data.</p>
+        </article>
+        <article class="interest-item" style="--item-accent:#22d3ee">
+          <div class="interest-icon" aria-hidden="true">📊</div>
+          <h3>Data Science</h3>
+          <p>Analysing datasets, uncovering patterns, and turning raw signals into decisions.</p>
+        </article>
+        <article class="interest-item" style="--item-accent:#2dd4a8">
+          <div class="interest-icon" aria-hidden="true">🌐</div>
+          <h3>Full-Stack Development</h3>
+          <p>Shipping end-to-end products — from clear interfaces to reliable backends and data layers.</p>
+        </article>
+        <article class="interest-item" style="--item-accent:#f0a35e">
+          <div class="interest-icon" aria-hidden="true">🔬</div>
+          <h3>Academic Research</h3>
+          <p>Investigating open problems in computing and contributing through papers and collaborations.</p>
+        </article>
+        <article class="interest-item" style="--item-accent:#f472b6">
+          <div class="interest-icon" aria-hidden="true">🧠</div>
+          <h3>Agentic AI</h3>
+          <p>Building multi-agent systems that plan, reason, and act across complex workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- QUALIFICATIONS -->
+    <section class="section" id="qualifications">
+      <div class="section-head">
+        <h2>My <span class="accent-word">Qualifications</span></h2>
+        <p>Education and academic standing.</p>
+      </div>
+      <div class="qual-stack">
+        <article class="qual-card">
+          <div>
+            <h3>B.Sc. (Hons) in Computer Science and Engineering</h3>
+            <p class="org">University of Moratuwa, Sri Lanka · <time>Mar 2024 – Present</time></p>
+            <p class="org" style="margin-top:-0.5rem;margin-bottom:0.85rem">Specializing in Data Science and Engineering</p>
+            <div class="qual-tags">
+              <span class="tag accent">CGPA 3.95 / 4.00</span>
+              <span class="tag warm">Dean’s List · Sem 1–4</span>
+            </div>
+          </div>
+          <div class="qual-mark" title="University of Moratuwa">UoM</div>
+        </article>
+        <article class="qual-card">
+          <div>
+            <h3>G.C.E. Advanced Level — Physical Science</h3>
+            <p class="org">Anuradhapura Central College · <time>Jan 2014 – Feb 2023</time></p>
+            <div class="qual-tags">
+              <span class="tag">Maths A · Chem A · Physics A · English A</span>
+              <span class="tag accent">Z-score 2.7635</span>
+              <span class="tag warm">District Rank 2</span>
+              <span class="tag">Island Rank 57</span>
+            </div>
+          </div>
+          <div class="qual-mark" title="Anuradhapura Central College">ACC</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-head">
+        <h2>My <span class="accent-word">Projects</span></h2>
+        <p>Selected work across ML, software engineering, and web systems.</p>
+      </div>
+      <div class="filter-bar" role="tablist" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="data-science">Data Science</button>
+        <button class="filter-btn" data-filter="software">Software Engineering</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="database">Database</button>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card" data-categories="data-science software">
+          <div class="project-media">
+            <div class="placeholder">BrailleLens</div>
+            <span class="status">Ongoing · DSE Project</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Data Science</span>
+              <span>AI · Computer Vision</span>
+            </div>
+            <h3><a href="https://github.com/Kalana-Lakshan/BrailleLens" target="_blank" rel="noopener">BrailleLens</a></h3>
+            <p>Interactive Braille learning with AI-powered smart glasses — Gaussian-blur dot detection, YOLO fingertip tracking, and 98.44% classification accuracy on DBSI flatbed scans.</p>
+            <div class="tech-row">
+              <span class="tag">Flutter</span><span class="tag">Streamlit</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">YOLO</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Kalana-Lakshan/BrailleLens" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-categories="data-science web software">
+          <div class="project-media">
+            <div class="placeholder">Govi Isuru</div>
+            <span class="status">Sep 2025 · Competition</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Software Engineering</span>
+              <span>Group · Smart Farming</span>
+            </div>
+            <h3><a href="https://github.com/Kalana-Lakshan/Govi-Isuru" target="_blank" rel="noopener">Govi Isuru</a></h3>
+            <p>Bilingual smart-farming platform with CNN crop-disease detection (Grad-CAM), Express/MongoDB APIs, React buyer dashboard, and paddy yield prediction from 2015–2024 data.</p>
+            <div class="tech-row">
+              <span class="tag">React</span><span class="tag">Express</span><span class="tag">FastAPI</span><span class="tag">MongoDB</span><span class="tag">scikit-learn</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Kalana-Lakshan/Govi-Isuru" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-categories="software data-science">
+          <div class="project-media">
+            <div class="placeholder">Smart Waste</div>
+            <span class="status">Jun 2026 · SE Project</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Data Engineering</span>
+              <span>Group · UoM Sem 4</span>
+            </div>
+            <h3><a href="https://github.com/UOM-CSE-Sem4-GroupF/Smart-Waste-Management-System-DataAnalysis" target="_blank" rel="noopener">Smart Waste Management</a></h3>
+            <p>Data layer for ML fill-time prediction — MLflow model serving with heuristic fallbacks, FastAPI endpoints, and OR-Tools routing integration over Kafka / Airflow / Spark.</p>
+            <div class="tech-row">
+              <span class="tag">FastAPI</span><span class="tag">MLflow</span><span class="tag">Kafka</span><span class="tag">Airflow</span><span class="tag">Spark</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/UOM-CSE-Sem4-GroupF/Smart-Waste-Management-System-DataAnalysis" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-categories="web software">
+          <div class="project-media">
+            <div class="placeholder">plango AI</div>
+            <span class="status">Jul 2026 · Competition</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Web Development</span>
+              <span>Agentic AI · Co-author</span>
+            </div>
+            <h3><a href="https://github.com/Rashmika-Nawanjana/Plango-AI" target="_blank" rel="noopener">plango AI</a></h3>
+            <p>Multi-agent family grocery OS with Gemini orchestration — in-chat clarification for budget, servings, and days, plus Supabase-ready backend for localized meal planning.</p>
+            <div class="tech-row">
+              <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Gemini</span><span class="tag">Supabase</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Rashmika-Nawanjana/Plango-AI" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-categories="web database">
+          <div class="project-media">
+            <div class="placeholder">MedSync</div>
+            <span class="status">Oct 2025 · Database Project</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Database</span>
+              <span>Full-stack clinic system</span>
+            </div>
+            <h3><a href="https://github.com/Kalana-Lakshan/Project-MedSync" target="_blank" rel="noopener">MedSync</a></h3>
+            <p>Clinic appointment and treatment management with JWT role-based access, Express/TypeScript APIs, MySQL persistence, and Docker deployment on AWS EC2.</p>
+            <div class="tech-row">
+              <span class="tag">React</span><span class="tag">Express</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">AWS EC2</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Kalana-Lakshan/Project-MedSync" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-categories="software">
+          <div class="project-media">
+            <div class="placeholder">FlowerExchange</div>
+            <span class="status">Mar 2026 · Personal</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="tag accent">Software Engineering</span>
+              <span>Systems · C++</span>
+            </div>
+            <h3><a href="https://github.com/Kalana-Lakshan/FlowerExchange-Project" target="_blank" rel="noopener">FlowerExchange</a></h3>
+            <p>C++ order-matching engine with price-time priority across instruments, built with STL priority queues, maps, and unique_ptr ownership.</p>
+            <div class="tech-row">
+              <span class="tag">C++</span><span class="tag">STL</span><span class="tag">Makefile</span>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/Kalana-Lakshan/FlowerExchange-Project" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-head">
+        <h2>Academic <span class="accent-word">Research</span></h2>
+        <p>Publications and ongoing scholarly work.</p>
+      </div>
+      <div class="research-list">
+        <article class="research-card">
+          <div class="research-meta">
+            <span class="tag accent">Author</span>
+            <span>MERCon 2026 · Accepted</span>
+            <span>arXiv:2606.28190</span>
+          </div>
+          <h3>
+            <a href="https://arxiv.org/pdf/2606.28190" target="_blank" rel="noopener">
+              The Remittance Blueprint: Data-driven Intelligence for Sri Lanka
+            </a>
+          </h3>
+          <p>
+            Analysis of 32 years of Sri Lankan remittance data — data-driven intelligence for understanding
+            remittance dynamics and informing policy-relevant insights. Paper accepted for MERCon 2026.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="section-head">
+        <h2>Technical <span class="accent-word">Skills</span></h2>
+        <p>Languages, frameworks, and tools I use day to day.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-panel" style="--panel-accent:#3b82f6">
+          <h3>Programming Languages</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">Py</span>Python</span>
+            <span class="skill-chip"><span class="icon">C+</span>C++</span>
+            <span class="skill-chip"><span class="icon">JS</span>JavaScript</span>
+            <span class="skill-chip"><span class="icon">SQ</span>SQL</span>
+            <span class="skill-chip"><span class="icon">HT</span>HTML</span>
+            <span class="skill-chip"><span class="icon">CS</span>CSS</span>
+          </div>
+        </div>
+        <div class="skill-panel" style="--panel-accent:#2dd4a8">
+          <h3>Frameworks &amp; Libraries</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">Re</span>React</span>
+            <span class="skill-chip"><span class="icon">Nx</span>Next.js</span>
+            <span class="skill-chip"><span class="icon">Ex</span>Express.js</span>
+            <span class="skill-chip"><span class="icon">Fa</span>FastAPI</span>
+            <span class="skill-chip"><span class="icon">PT</span>PyTorch</span>
+            <span class="skill-chip"><span class="icon">sk</span>scikit-learn</span>
+          </div>
+        </div>
+        <div class="skill-panel" style="--panel-accent:#f0a35e">
+          <h3>Databases</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">My</span>MySQL</span>
+            <span class="skill-chip"><span class="icon">PG</span>PostgreSQL</span>
+            <span class="skill-chip"><span class="icon">Mg</span>MongoDB</span>
+            <span class="skill-chip"><span class="icon">Sb</span>Supabase</span>
+          </div>
+        </div>
+        <div class="skill-panel" style="--panel-accent:#7eb8ff">
+          <h3>Data Engineering &amp; ML</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">Kf</span>Kafka</span>
+            <span class="skill-chip"><span class="icon">Sp</span>Spark</span>
+            <span class="skill-chip"><span class="icon">Af</span>Airflow</span>
+            <span class="skill-chip"><span class="icon">ML</span>MLflow</span>
+            <span class="skill-chip"><span class="icon">Pd</span>Pandas</span>
+            <span class="skill-chip"><span class="icon">CV</span>OpenCV</span>
+          </div>
+        </div>
+        <div class="skill-panel" style="--panel-accent:#f472b6">
+          <h3>Cloud &amp; DevOps</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">AW</span>AWS EC2</span>
+            <span class="skill-chip"><span class="icon">Dk</span>Docker</span>
+            <span class="skill-chip"><span class="icon">Ve</span>Vercel</span>
+            <span class="skill-chip"><span class="icon">GH</span>GitHub Actions</span>
+            <span class="skill-chip"><span class="icon">Gt</span>Git</span>
+          </div>
+        </div>
+        <div class="skill-panel" style="--panel-accent:#a78bfa">
+          <h3>Languages</h3>
+          <div class="skill-chips">
+            <span class="skill-chip"><span class="icon">EN</span>English — Fluent</span>
+            <span class="skill-chip"><span class="icon">SI</span>Sinhala — Native</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="section" id="achievements">
+      <div class="section-head">
+        <h2>Competitions &amp; <span class="accent-word">Achievements</span></h2>
+        <p>Hackathons, buildathons, and competitive placements.</p>
+      </div>
+      <div class="achieve-list">
+        <article class="achieve-item">
+          <h3>Winner — Mobitel Codeblast Hackathon Challenge 2025</h3>
+          <p class="org">National AI Expo · Ministry of Digital Economy · SLT Mobitel</p>
+          <p>Won with Pahasara, an AI-powered personalized learning platform for Sri Lankan students.</p>
+        </article>
+        <article class="achieve-item runner">
+          <h3>1st Runner-Up — Devthon 3.0</h3>
+          <p class="org">Leo Club of UoM · SLTC Leo Club · Rotaract Club of UoM</p>
+          <p>Secured 1st Runner-Up with Team TerraBytes for Govi Isuru.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Top 10 Finalist — AgenTrix 2026</h3>
+          <p class="org">ComES · Faculty of Engineering, University of Ruhuna</p>
+          <p>Top 10 finalists with Plango AI.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Top 15 Finalist — NeuroX 1.0</h3>
+          <p class="org">NSBM · Sri Lanka’s Premier Buildathon</p>
+          <p>Top 15 Elite Builders with the agentic AI project Lankara.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Top 15 — Codemania Version 6.0</h3>
+          <p class="org">National Inter-University Datathon · IEEE CS SB of SLTC</p>
+          <p>Top 15 nationally in a competitive, data-driven datathon.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Finalist — LAUNCH’26</h3>
+          <p class="org">IEEE Computer Society Chapter, University of Kelaniya</p>
+          <p>Relic Ring Protocol — resilient routing for dynamic networks, with Team TerraBytes.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Finalist — UOJ Coders 4.0</h3>
+          <p class="org">Computer Society, University of Jaffna</p>
+          <p>Reached the finals of an algorithmic coding competition.</p>
+        </article>
+        <article class="achieve-item finalist">
+          <h3>Finalist — Global Quantum Mechanics Challenge 2026</h3>
+          <p class="org">Edu.Harbour</p>
+          <p>Advanced to the final round.</p>
+        </article>
+      </div>
+      <p class="participant-note">
+        <strong>Also participated:</strong> MoraXtreme 10.0 · IEEEXtreme 19.0 · SLIoT Challenge 2025
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="section-head">
+        <h2>Leadership &amp; <span class="accent-word">Volunteering</span></h2>
+        <p>Committees, community work, and school leadership.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-panel">
+          <h3>University &amp; Professional</h3>
+          <ul>
+            <li><strong>Program &amp; Logistics Committee</strong> — IEEE GammaData API 4.0</li>
+            <li><strong>Editorial Committee</strong> — SLIoT Challenge 2026</li>
+            <li><strong>Editorial Committee</strong> — IEEE CS 25/26</li>
+            <li><strong>Editorial Committee</strong> — IEEE CIS SB Chapter of UoM 25/26</li>
+            <li><strong>Team Handling Committee</strong> — Hit the Grounds 2025</li>
+            <li><strong>Refreshments Committee</strong> — CSE Careers Fair 2026</li>
+            <li><strong>Contributor</strong> — Soyuru Sathkara Volunteer Project</li>
+          </ul>
+        </div>
+        <div class="exp-panel">
+          <h3>School — Anuradhapura Central College</h3>
+          <ul>
+            <li>Member, Scouts Association</li>
+            <li>Fourth Badge holder — Environmental Leads Association</li>
+            <li>Member, Saukyadhana Association</li>
+            <li>Chess player — inter-house sports</li>
+            <li>School Prefect</li>
+          </ul>
         </div>
       </div>
 
-      <div class="contact-list" style="margin-top:16px">
-        <div class="chip" title="Open to work">🔓 Open to — Add profile section</div>
-        <div class="chip" title="Resources">💡 Resources — Showcase services</div>
-        <div class="chip" title="Analytics">📊 Analytics — 35 profile views (past 7 days)</div>
+      <div class="certs-wrap">
+        <details>
+          <summary>Certifications &amp; Courses</summary>
+          <ul>
+            <li>AWS Academy Graduate — Cloud Foundations</li>
+            <li>AWS Academy Graduate — Microservices and CI/CD Pipeline Builder</li>
+            <li>Cisco Network Technician Career Path</li>
+            <li>IBM Machine Learning with Python</li>
+            <li>IBM Introduction to Deep Learning and Neural Networks with Keras</li>
+            <li>IBM Building Generative AI-Powered Applications with Python</li>
+            <li>IBM Python for Data Science, AI &amp; Development</li>
+            <li>Kaggle Intermediate Machine Learning</li>
+            <li>Kaggle Intro to Machine Learning</li>
+            <li>Kaggle Feature Engineering</li>
+            <li>Kaggle Data Cleaning</li>
+            <li>Kaggle Pandas</li>
+            <li>Python Programming: Advanced — CSE, University of Moratuwa</li>
+            <li>Python for Beginners — CSE, University of Moratuwa</li>
+            <li>Web Design for Beginners — Faculty of IT, University of Moratuwa</li>
+          </ul>
+        </details>
       </div>
+    </section>
 
-      <div class="stat-row" style="margin-top:14px">
-        <div class="stat">
-          <div style="font-size:20px">105</div>
-          <div class="muted" style="font-size:12px">Followers</div>
-        </div>
-        <div class="stat">
-          <div style="font-size:20px">35</div>
-          <div class="muted" style="font-size:12px">Profile views</div>
-        </div>
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section-head">
+        <h2>Get in <span class="accent-word">Touch</span></h2>
       </div>
-
-      <div style="display:flex;gap:10px;margin-top:14px">
-        <button class="btn" onclick="location.href='#contact'">Contact</button>
-        <button class="btn" style="background:transparent;color:var(--accent);border:1px solid rgba(110,231,183,0.12)" onclick="copyEmail()">Copy info</button>
-      </div>
-
-      <div style="margin-top:16px">
-        <div class="small" style="margin-bottom:8px">Quick highlights</div>
-        <div class="badges">
-          <span class="badge">University of Moratuwa</span>
-          <span class="badge">Machine Learning (IBM)</span>
-          <span class="badge">Generative AI</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- RIGHT -->
-    <section class="main-col">
-      <!-- SUMMARY -->
-      <div class="card summary" aria-labelledby="summary-title">
-        <div class="section-title">
-          <h2 id="summary-title">Summary</h2>
-          <div class="muted small">Write a summary to highlight your personality or work experience</div>
-        </div>
-        <p>
-          I'm a Computer Science & Engineering undergraduate at the University of Moratuwa (Mar 2024 — present), based in Anuradhapura, Sri Lanka.
-          I work on AI/ML projects and full-stack apps. Recent highlights include winning the SLT Mobitel CodeBlaster Hackathon 2025 (product: <strong>Pahasara</strong>) — an AI-powered personalized learning platform.
+      <div class="contact-wrap">
+        <p class="lead">
+          Open to internships, research collaborations, and projects in data science,
+          ML, and full-stack engineering. Reach out anytime.
         </p>
-      </div>
-
-      <!-- EXPERIENCE -->
-      <div class="card" aria-labelledby="exp-title">
-        <div class="section-title">
-          <h2 id="exp-title">Experience</h2>
-          <div class="muted">Showcase your accomplishments</div>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:kalanal.23@cse.mrt.ac.lk">
+            <span class="label">Email</span>
+            <span>kalanal.23@cse.mrt.ac.lk</span>
+          </a>
+          <a class="contact-link" href="tel:+94703407328">
+            <span class="label">Phone</span>
+            <span>+94 70 340 7328</span>
+          </a>
+          <a class="contact-link" href="https://github.com/Kalana-Lakshan" target="_blank" rel="noopener">
+            <span class="label">GitHub</span>
+            <span>Kalana-Lakshan</span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/kalana-lakshan-5bb9a3345" target="_blank" rel="noopener">
+            <span class="label">LinkedIn</span>
+            <span>Kalana Lakshan</span>
+          </a>
         </div>
-
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="list-item" aria-label="Hackathon win">
-            <div class="left">🏆</div>
-            <div style="flex:1">
-              <div style="font-weight:800">Champion — SLT Mobitel CodeBlaster Hackathon 2025</div>
-              <div class="meta">Pahasara — AI-powered personalized learning platform (Team: Sangeeth Kariyapperuma, Kalana Lakshan)</div>
-              <div class="muted" style="margin-top:8px;font-size:13px">Final pitch: 30 Sep 2025 — Monarch Imperial; Award ceremony included Deputy Minister of Digital Economy</div>
-            </div>
-          </div>
-
-          <div class="list-item" aria-label="HRxTech participation">
-            <div class="left">🎤</div>
-            <div style="flex:1">
-              <div style="font-weight:800">Participant — HRxTech 2025</div>
-              <div class="meta">Event at University of Moratuwa — "Leading HR into a Smarter Tomorrow" (20 July 2025)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- EDUCATION -->
-      <div class="card" aria-labelledby="edu-title">
-        <div class="section-title">
-          <h2 id="edu-title">Education</h2>
-          <div class="muted">Academic background</div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="list-item">
-            <div class="left">🎓</div>
-            <div style="flex:1">
-              <div style="font-weight:800">University of Moratuwa</div>
-              <div class="muted">Bachelor of the Science of Engineering (Hons), Computer Science and Engineering — Mar 2024 — present</div>
-            </div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">🏫</div>
-            <div style="flex:1">
-              <div style="font-weight:800">Anuradhapura Central College</div>
-              <div class="muted">Jan 2014 — Feb 2023</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CERTIFICATIONS -->
-      <div class="card" aria-labelledby="cert-title">
-        <div class="section-title">
-          <h2 id="cert-title">Licenses & Certifications</h2>
-          <div class="muted">Relevant courses & badges</div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div class="list-item">
-            <div class="left">🔖</div>
-            <div style="flex:1">
-              <div style="font-weight:800">Machine Learning with Python — IBM</div>
-              <div class="muted">Issued Aug 2025 • Credential ID: 9HS1BZ7F91MD</div>
-            </div>
-          </div>
-
-          <div class="list-item">
-            <div class="left">🧠</div>
-            <div style="flex:1">
-              <div style="font-weight:800">Building Generative AI-Powered Applications with Python — IBM</div>
-              <div class="muted">Issued May 2025 • Credential ID: AJERNZVQYVKT</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SKILLS -->
-      <div class="card" aria-labelledby="skills-title">
-        <div class="section-title">
-          <h2 id="skills-title">Skills</h2>
-          <div class="muted">Selected technical skills</div>
-        </div>
-        <div class="badges" style="margin-top:6px">
-          <span class="badge">Python</span>
-          <span class="badge">Machine Learning</span>
-          <span class="badge">Artificial Intelligence</span>
-          <span class="badge">React</span>
-          <span class="badge">Node.js</span>
-          <span class="badge">Full-stack</span>
-        </div>
-      </div>
-
-      <!-- LATEST POSTS -->
-      <div class="card" aria-labelledby="posts-title">
-        <div class="section-title">
-          <h2 id="posts-title">Recent posts</h2>
-          <div class="muted">Selected social updates</div>
-        </div>
-
-        <!-- Post 1 -->
-        <article class="post" aria-label="Post: CodeBlaster win">
-          <div class="post-head">
-            <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#0ea5a7);display:grid;place-items:center;font-weight:700">KL</div>
-            <div>
-              <div style="font-weight:800">Kalana Lakshan</div>
-              <div class="muted">2w • Visible to anyone</div>
-            </div>
-          </div>
-          <div class="post-body">
-            <p><strong>🚀 Championship — SLT Mobitel CodeBlaster Hackathon 2025</strong></p>
-            <p>We (Sangeeth Kariyapperuma, Kalana Lakshan) won the overall championship with <em>Pahasara</em> — an AI-powered personalized learning platform for Sri Lankan students. Final pitch held 30 Sep 2025 at the Monarch Imperial. Grateful for mentors and SLT Mobitel's support.</p>
-            <div class="muted" style="margin-top:8px">170 likes • 18 comments • 2 reposts</div>
-          </div>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="post" style="margin-top:12px" aria-label="Post: HRxTech 2025">
-          <div class="post-head">
-            <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#60a5fa,#6ee7b7);display:grid;place-items:center;font-weight:700">KL</div>
-            <div>
-              <div style="font-weight:800">Kalana Lakshan</div>
-              <div class="muted">2mo • Visible to anyone</div>
-            </div>
-          </div>
-          <div class="post-body">
-            <p>🚀 Grateful to have been part of <strong>HRxTech 2025</strong> — "Leading HR into a Smarter Tomorrow" at University of Moratuwa (20 July 2025). Proud to share my Certificate of Participation and to keep learning and contributing.</p>
-            <div class="muted" style="margin-top:8px">12 likes • 1 comment</div>
-          </div>
-        </article>
-      </div>
-
-      <!-- CONTACT & FOOTER -->
-      <div class="card" id="contact" aria-labelledby="contact-title">
-        <div class="section-title">
-          <h2 id="contact-title">Contact</h2>
-          <div class="muted">Get in touch</div>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div class="chip" style="background:transparent;color:var(--muted)">📍 Anuradhapura, North Central Province, Sri Lanka</div>
-          <div class="chip" style="background:transparent;color:var(--muted)">📧 <span id="contact-email">kalana.lakshan@example.com</span></div>
-          <div class="chip" style="background:transparent;color:var(--muted)">🔗 <a href="#" style="color:var(--accent);text-decoration:none">LinkedIn / Profile</a></div>
-        </div>
-
-        <footer>
-          <div>Designed & built by Kalana Lakshan — University of Moratuwa</div>
-          <div style="margin-top:6px" class="muted">Single-file portfolio • Open to opportunities</div>
-        </footer>
       </div>
     </section>
   </main>
 
-  <script>
-    // Small helpers
-    function copyEmail(){
-      const email = document.getElementById('contact-email').textContent || 'kalana.lakshan@example.com';
-      if(navigator.clipboard){
-        navigator.clipboard.writeText(email).then(()=>alert('Contact copied: ' + email));
-      } else {
-        prompt('Copy contact', email);
-      }
-    }
+  <footer>
+    <p>© <span id="year"></span> H.M. Kalana Lakshan · Built for GitHub Pages</p>
+  </footer>
 
-    // Customize content: replace placeholders if you want
-    (function populate(){
-      // If you want to update the contact email quickly, change here.
-      const emailEl = document.getElementById('contact-email');
-      // replace placeholder with nothing — keep example address unless user changes it
-      if(emailEl && emailEl.textContent.trim() === 'kalana.lakshan@example.com'){
-        // leave as-is; instructs viewer to change file to set real email.
-      }
-    })();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
