@@ -2,54 +2,145 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ----- Subtle particle field ----- */
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Moving green particle field ----- */
   const canvas = document.getElementById("stars");
   if (canvas) {
     const ctx = canvas.getContext("2d");
     let particles = [];
     let raf = 0;
-    let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const maxDist = 140;
 
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      const count = Math.min(90, Math.floor((canvas.width * canvas.height) / 18000));
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const area = window.innerWidth * window.innerHeight;
+      const count = Math.min(130, Math.max(55, Math.floor(area / 12000)));
       particles = Array.from({ length: count }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.4 + 0.3,
-        a: Math.random() * 0.45 + 0.1,
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 2.2 + 0.6,
+        a: Math.random() * 0.55 + 0.25,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        pulse: Math.random() * Math.PI * 2,
       }));
     };
 
     const draw = () => {
       if (!ctx || reduced) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.22;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(74, 222, 128, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        p.pulse += 0.02;
+        if (p.x < -20) p.x = window.innerWidth + 20;
+        if (p.x > window.innerWidth + 20) p.x = -20;
+        if (p.y < -20) p.y = window.innerHeight + 20;
+        if (p.y > window.innerHeight + 20) p.y = -20;
+
+        const glow = 0.55 + Math.sin(p.pulse) * 0.25;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200, 230, 220, ${p.a})`;
+        ctx.fillStyle = `rgba(134, 239, 172, ${p.a * glow})`;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(34, 197, 94, ${0.08 * glow})`;
         ctx.fill();
       }
+
       raf = requestAnimationFrame(draw);
     };
 
     resize();
-    if (!reduced) draw();
+    if (!reduced) {
+      draw();
+    } else {
+      ctx.fillStyle = "rgba(134, 239, 172, 0.35)";
+      for (let i = 0; i < 40; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
     window.addEventListener("resize", () => {
       cancelAnimationFrame(raf);
       resize();
       if (!reduced) draw();
     });
   }
+
+  /* ----- Typewriter: mistype → erase → correct name ----- */
+  const typedEl = document.getElementById("typedName");
+  const cursorEl = document.getElementById("typedCursor");
+
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const typeText = async (el, text, speed = 70) => {
+    for (let i = 0; i < text.length; i++) {
+      el.textContent += text[i];
+      await sleep(speed + Math.random() * 40);
+    }
+  };
+
+  const eraseText = async (el, speed = 42) => {
+    while (el.textContent.length > 0) {
+      el.textContent = el.textContent.slice(0, -1);
+      await sleep(speed);
+    }
+  };
+
+  const runTypewriter = async () => {
+    if (!typedEl) return;
+    const finalName = "Kalana Lakshan";
+
+    if (reduced) {
+      typedEl.textContent = finalName;
+      cursorEl?.classList.add("done");
+      return;
+    }
+
+    typedEl.textContent = "";
+    await sleep(450);
+    await typeText(typedEl, "Kalana Laskhan", 68);
+    await sleep(520);
+    await eraseText(typedEl, 38);
+    await sleep(280);
+    await typeText(typedEl, finalName, 72);
+    await sleep(400);
+    cursorEl?.classList.add("done");
+  };
+
+  runTypewriter();
 
   /* ----- Mobile nav ----- */
   const toggle = document.getElementById("navToggle");

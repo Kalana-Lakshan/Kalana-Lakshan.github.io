@@ -1,22 +1,22 @@
 /* Kalana Lakshan — Portfolio
-   Theme: graphite + teal/amber (distinct from navy/purple reference) */
+   Theme: deep forest green */
 
 :root {
-  --bg-deep: #0a0f0e;
-  --bg: #101816;
-  --bg-elevated: #161f1d;
-  --bg-card: rgba(22, 32, 30, 0.72);
-  --border: rgba(180, 210, 200, 0.12);
-  --border-strong: rgba(180, 210, 200, 0.22);
-  --text: #eef3f1;
-  --text-muted: #9aada6;
-  --text-dim: #6e8179;
-  --accent: #2dd4a8;
-  --accent-soft: rgba(45, 212, 168, 0.14);
-  --accent-2: #f0a35e;
-  --accent-2-soft: rgba(240, 163, 94, 0.14);
-  --glow: rgba(45, 212, 168, 0.35);
-  --nav-bg: rgba(12, 18, 16, 0.78);
+  --bg-deep: #050a07;
+  --bg: #0a1510;
+  --bg-elevated: #12201a;
+  --bg-card: rgba(14, 36, 28, 0.78);
+  --border: rgba(110, 210, 150, 0.14);
+  --border-strong: rgba(110, 210, 150, 0.28);
+  --text: #edf8f1;
+  --text-muted: #8fbfa3;
+  --text-dim: #5e8a72;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.16);
+  --accent-2: #86efac;
+  --accent-2-soft: rgba(134, 239, 172, 0.14);
+  --glow: rgba(34, 197, 94, 0.45);
+  --nav-bg: rgba(6, 16, 12, 0.82);
   --radius: 14px;
   --radius-sm: 8px;
   --max: 980px;
@@ -54,20 +54,20 @@ body {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(45, 212, 168, 0.09), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(240, 163, 94, 0.06), transparent 45%),
-    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(45, 212, 168, 0.04), transparent 50%),
-    linear-gradient(165deg, #0a0f0e 0%, #0e1513 40%, #0b1210 100%);
+    radial-gradient(ellipse 90% 55% at 15% -5%, rgba(34, 197, 94, 0.16), transparent 52%),
+    radial-gradient(ellipse 70% 45% at 88% 18%, rgba(74, 222, 128, 0.1), transparent 48%),
+    radial-gradient(ellipse 55% 50% at 50% 105%, rgba(22, 163, 74, 0.12), transparent 55%),
+    linear-gradient(165deg, #050a07 0%, #0b1611 42%, #07110c 100%);
 }
 
 .bg-mesh {
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.35;
+  opacity: 0.4;
   background-image:
-    linear-gradient(rgba(45, 212, 168, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(45, 212, 168, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(34, 197, 94, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.045) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
   pointer-events: none;
@@ -154,7 +154,7 @@ button {
 
 .side-nav a.active .dot {
   background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(45, 212, 168, 0.25), 0 0 10px var(--glow);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.28), 0 0 12px var(--glow);
   transform: scale(1.15);
 }
 
@@ -286,13 +286,35 @@ button {
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 0.65rem;
+  min-height: 1.15em;
 }
 
-.intro-name span {
-  background: linear-gradient(120deg, var(--text) 40%, var(--accent) 100%);
+.intro-name .typed {
+  background: linear-gradient(120deg, var(--text) 35%, var(--accent) 75%, var(--accent-2) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.intro-name .cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.92em;
+  margin-left: 0.08em;
+  background: var(--accent);
+  border-radius: 1px;
+  vertical-align: -0.05em;
+  box-shadow: 0 0 12px var(--glow);
+  animation: blink 0.85s step-end infinite;
+}
+
+.intro-name .cursor.done {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 .intro-role {
@@ -347,12 +369,12 @@ button {
 .btn-primary {
   background: var(--accent);
   color: #061210;
-  box-shadow: 0 4px 20px rgba(45, 212, 168, 0.25);
+  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(45, 212, 168, 0.35);
+  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.4);
 }
 
 .btn-ghost {
@@ -527,13 +549,13 @@ button {
 .tag.accent {
   color: var(--accent);
   background: var(--accent-soft);
-  border-color: rgba(45, 212, 168, 0.25);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .tag.warm {
-  color: var(--accent-2);
+  color: #bbf7d0;
   background: var(--accent-2-soft);
-  border-color: rgba(240, 163, 94, 0.25);
+  border-color: rgba(134, 239, 172, 0.3);
 }
 
 .qual-mark {
@@ -566,7 +588,7 @@ button {
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
-  border: 1px solid rgba(45, 212, 168, 0.35);
+  border: 1px solid rgba(34, 197, 94, 0.4);
   color: var(--text-muted);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
@@ -577,9 +599,9 @@ button {
 }
 
 .filter-btn.active {
-  background: #c5ddd4;
-  color: #0a1210;
-  border-color: #c5ddd4;
+  background: #86efac;
+  color: #052e16;
+  border-color: #86efac;
 }
 
 .projects-grid {
@@ -626,8 +648,8 @@ button {
   letter-spacing: -0.02em;
   color: rgba(238, 243, 241, 0.35);
   background:
-    linear-gradient(135deg, rgba(45, 212, 168, 0.12), transparent 50%),
-    linear-gradient(225deg, rgba(240, 163, 94, 0.1), transparent 50%),
+    linear-gradient(135deg, rgba(34, 197, 94, 0.18), transparent 50%),
+    linear-gradient(225deg, rgba(74, 222, 128, 0.12), transparent 50%),
     var(--bg-elevated);
 }
 
@@ -801,7 +823,7 @@ button {
 
 .skill-chip:hover {
   border-color: var(--border-strong);
-  background: rgba(45, 212, 168, 0.08);
+  background: rgba(34, 197, 94, 0.1);
 }
 
 .skill-chip .icon {
