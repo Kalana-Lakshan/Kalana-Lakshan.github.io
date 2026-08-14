@@ -819,39 +819,66 @@ button {
 .skill-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.75rem 0.65rem;
 }
 
-.skill-chip {
-  display: inline-flex;
+.skill-item {
+  width: 76px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 0.75rem;
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text);
-  transition: border-color 0.2s, background 0.2s;
+  text-align: center;
 }
 
-.skill-chip:hover {
-  border-color: var(--border-strong);
-  background: rgba(34, 197, 94, 0.1);
-}
-
-.skill-chip .icon {
-  width: 18px;
-  height: 18px;
-  border-radius: 4px;
+.skill-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
   display: grid;
   place-items: center;
-  font-size: 0.65rem;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid var(--border);
+  transition: border-color 0.25s, transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+}
+
+.skill-item:hover .skill-icon-wrap {
+  border-color: var(--panel-accent, var(--accent));
+  background: rgba(34, 197, 94, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+.skill-icon-wrap img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+
+.skill-icon-wrap img.icon-light {
+  filter: invert(1) brightness(1.15);
+}
+
+.skill-icon-wrap.lang-badge {
+  font-family: var(--font-display);
   font-weight: 800;
-  background: var(--accent-soft);
+  font-size: 0.95rem;
   color: var(--accent);
-  flex-shrink: 0;
+  background: var(--accent-soft);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.skill-item > span {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.25;
+  max-width: 76px;
+}
+
+.skill-item:hover > span {
+  color: var(--text);
 }
 
 /* ---------- Achievements ---------- */
