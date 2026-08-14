@@ -892,7 +892,7 @@ button {
 .achieve-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
 
 .achieve-card {
@@ -902,27 +902,32 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  min-width: 0;
   transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
 }
 
 .achieve-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: var(--border-strong);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
 }
 
 .achieve-media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   background: var(--bg-elevated);
 }
 
 .achieve-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 28%;
   display: block;
   transition: transform 0.45s var(--ease);
 }
@@ -931,9 +936,25 @@ button {
   transform: scale(1.04);
 }
 
+.achieve-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(238, 243, 241, 0.35);
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.18), transparent 50%),
+    linear-gradient(225deg, rgba(74, 222, 128, 0.12), transparent 50%),
+    var(--bg-elevated);
+}
+
 .achieve-badge {
   display: inline-block;
-  padding: 0.28rem 0.65rem;
+  padding: 0.3rem 0.65rem;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -948,6 +969,7 @@ button {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
+  z-index: 1;
 }
 
 .achieve-badge.win {
@@ -964,27 +986,27 @@ button {
 
 .achieve-badge.finalist {
   color: #dbeafe;
-  background: rgba(59, 130, 246, 0.28);
+  background: rgba(59, 130, 246, 0.35);
   border-color: rgba(126, 184, 255, 0.45);
 }
 
 .achieve-body {
-  padding: 1.05rem 1.15rem 1.2rem;
+  padding: 1.15rem 1.25rem 1.35rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
   flex: 1;
 }
 
 .achieve-card h3 {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .achieve-card .org {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
   font-style: italic;
 }
@@ -992,37 +1014,6 @@ button {
 .achieve-card p:not(.org) {
   font-size: 0.875rem;
   color: var(--text-muted);
-}
-
-.achieve-card.wide {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: stretch;
-}
-
-.achieve-card.wide .achieve-media {
-  flex: 1.15;
-  aspect-ratio: auto;
-  min-height: 240px;
-  max-width: 55%;
-}
-
-.achieve-card.wide .achieve-body {
-  flex: 1;
-  justify-content: center;
-  padding: 1.4rem 1.5rem;
-}
-
-.achieve-compact-row {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-}
-
-.achieve-card.compact .achieve-badge {
-  align-self: flex-start;
-  margin-bottom: 0.15rem;
 }
 
 .participant-note {
@@ -1280,19 +1271,8 @@ footer a:hover {
 
   .projects-grid,
   .skills-grid,
-  .achieve-grid,
-  .achieve-compact-row {
+  .achieve-grid {
     grid-template-columns: 1fr;
-  }
-
-  .achieve-card.wide {
-    flex-direction: column;
-  }
-
-  .achieve-card.wide .achieve-media {
-    max-width: none;
-    aspect-ratio: 16 / 10;
-    min-height: 0;
   }
 
   .skill-panel,
