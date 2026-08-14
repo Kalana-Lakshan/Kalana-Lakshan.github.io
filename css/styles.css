@@ -559,19 +559,22 @@ button {
 }
 
 .qual-mark {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  background: linear-gradient(145deg, var(--accent-soft), transparent);
+  overflow: hidden;
+  background: #f4f7f5;
   border: 1px solid var(--border-strong);
-  color: var(--accent);
   flex-shrink: 0;
+}
+
+.qual-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* ---------- Projects ---------- */
@@ -1173,7 +1176,8 @@ footer a:hover {
   }
 
   .qual-mark {
-    display: none;
+    width: 48px;
+    height: 48px;
   }
 
   .contact-link {
