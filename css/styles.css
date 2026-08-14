@@ -1016,6 +1016,103 @@ button {
   color: var(--text-muted);
 }
 
+.achieve-block-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.achieve-block {
+  padding: 1.25rem 1.35rem 1.35rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--block-accent, var(--accent));
+  border-radius: var(--radius);
+  transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s;
+}
+
+.achieve-block:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+.achieve-block.accent-blue {
+  --block-accent: #7eb8ff;
+}
+
+.achieve-block.accent-teal {
+  --block-accent: #2dd4a8;
+}
+
+.achieve-block.accent-green {
+  --block-accent: #22c55e;
+}
+
+.achieve-block-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.achieve-block-tag {
+  display: inline-block;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.achieve-block-tag.top {
+  color: #fde68a;
+  border-color: rgba(253, 230, 138, 0.55);
+  background: rgba(253, 230, 138, 0.08);
+}
+
+.achieve-block-tag.finalist {
+  color: #fdba74;
+  border-color: rgba(253, 186, 116, 0.55);
+  background: rgba(253, 186, 116, 0.08);
+}
+
+.achieve-block-tag.participant {
+  color: var(--text-muted);
+  border-color: var(--border-strong);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.achieve-block-year {
+  display: inline-block;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid var(--border);
+}
+
+.achieve-block h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.45rem;
+  color: var(--text);
+}
+
+.achieve-block p {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
 .participant-note {
   margin-top: 1.25rem;
   padding: 1rem 1.25rem;
@@ -1271,7 +1368,8 @@ footer a:hover {
 
   .projects-grid,
   .skills-grid,
-  .achieve-grid {
+  .achieve-grid,
+  .achieve-block-grid {
     grid-template-columns: 1fr;
   }
 
